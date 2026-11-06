@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f8fc">
+  <meta name="description" content="A personal AI assistant for research, files and code, productivity, creative work, and task automation.">
+  <title>Quy Pham's AI Assistant</title>
+  <style>
+    :root{--bg:#f4f7fb;--card:#fff;--accent:#1675bd;--text:#1e293b;--muted:#64748b;--green:#16805d;--red:#c2413a;--border:#dbe3ed;--amber:#9a6b08;--violet:#6551b5;--soft:#edf5fc}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif}
+    a{color:var(--accent)}.container{max-width:900px;margin:auto;padding:38px 22px 54px}.topline{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:26px}.brand{color:#52657d;font-size:.78rem;font-weight:750;letter-spacing:.14em;text-transform:uppercase}.status{display:inline-flex;align-items:center;gap:8px;color:#126648;background:#e7f6ef;border:1px solid #c5e8d6;border-radius:99px;padding:5px 11px;font-size:.78rem}.dot{width:7px;height:7px;border-radius:50%;background:#28a372}
+    h1{font-size:clamp(2rem,6vw,3rem);line-height:1.12;letter-spacing:-.04em;background:linear-gradient(120deg,#1478be,#6357bd);color:transparent;background-clip:text;margin:0 0 10px}.subtitle{color:var(--muted);font-size:1.08rem;margin:0 0 24px}.hero{padding:5px 0 18px}.nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 27px}.nav a{font-size:.83rem;text-decoration:none;color:#40536b;border:1px solid #d5dfeb;border-radius:99px;padding:5px 11px;background:#fff}.nav a:hover{border-color:var(--accent);color:var(--accent)}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px 26px;margin:0 0 19px;box-shadow:0 3px 12px rgba(30,55,85,.035);scroll-margin-top:20px}.card h2{font-size:1.2rem;color:var(--accent);margin:0 0 13px}.card p{margin:0 0 12px}.card p:last-child{margin-bottom:0}.muted{color:var(--muted);font-size:.92rem}.highlight{background:#edf6fd;border-left:3px solid var(--accent);padding:14px 17px;border-radius:0 8px 8px 0;margin:14px 0}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.tile{padding:14px;background:#f7faff;border:1px solid #e5edf6;border-radius:9px}.tile strong{display:block;margin-bottom:4px}.tile .muted{display:block}.tile-icon{font-size:1.25rem;margin-bottom:4px}
+    table{width:100%;border-collapse:collapse;margin-top:8px}th,td{text-align:left;vertical-align:top;padding:10px 11px;border-bottom:1px solid var(--border);font-size:.92rem}th{color:#52657d;font-weight:650}td{color:#40536b}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#155e91;background:#edf5fc;padding:2px 6px;border-radius:5px}.step{display:flex;gap:13px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--border)}.step:last-child{border:0;padding-bottom:0}.stepnum{flex:none;display:grid;place-items:center;width:29px;height:29px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:.86rem}.tag{display:inline-block;padding:1px 8px;border-radius:99px;font-size:.72rem;font-weight:750;margin-right:5px}.tag-blue{color:#12649d;background:#e5f3fc}.tag-gold{color:#855d08;background:#fff5d8}.tag-green{color:#126648;background:#e5f5ed}
+    .flow{max-width:690px;margin:18px auto 0}.flow-node{background:#f1f5fb;border:1px solid #cbd6e3;border-radius:8px;padding:13px 15px;text-align:center}.flow-node strong{color:var(--text)}.flow-node small{display:block;color:var(--muted);margin-top:3px}.flow-arrow{color:var(--accent);text-align:center;font-size:1.35rem;line-height:1.45}.flow-decision{max-width:480px;margin:0 auto;background:#edf6fd;border:1px solid #83bde2;border-radius:12px;padding:13px 15px;text-align:center}.branches{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:10px 0}.branch{border:1px solid var(--border);border-radius:8px;padding:12px;font-size:.89rem;color:#40536b;background:#fff}.branch b{display:block;color:var(--accent);margin-bottom:4px}.note{border:1px solid #ead9a7;background:#fff9e9;border-radius:8px;padding:13px 15px;color:#594b2e;font-size:.9rem}.footer{text-align:center;color:var(--muted);font-size:.82rem;margin-top:30px;padding-top:18px;border-top:1px solid var(--border)}ul{padding-left:21px;color:var(--muted);margin:8px 0 0}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.button{display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border-radius:8px;text-decoration:none;font-size:.88rem;font-weight:700;background:var(--accent);color:#fff}.button.secondary{background:#fff;color:#3f536b;border:1px solid var(--border)}
+    @media(max-width:650px){.container{padding:25px 14px 40px}.card{padding:19px 17px}.grid3{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}.branches{grid-template-columns:1fr}.topline{align-items:flex-start;flex-direction:column}table{display:block;overflow-x:auto;white-space:normal}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+<main class="container">
+  <header class="hero" id="top">
+    <div class="topline"><span class="brand">PERSONAL AI ASSISTANT</span><span class="status"><i class="dot" aria-hidden="true"></i> Ready for requests</span></div>
+    <h1>Quy Pham's AI Assistant</h1>
+    <p class="subtitle">A versatile assistant for research, digital work, and creative projects.</p>
+    <div class="highlight"><strong>In brief:</strong> Share your goal and the result you want. The assistant identifies the type of work, chooses a suitable capability, prepares a result for your review, and can help automate recurring tasks.</div>
+    <nav class="nav" aria-label="Page navigation"><a href="#overview">Overview</a><a href="#capabilities">Capabilities</a><a href="#workflow">Workflow</a><a href="#outputs">Deliverables</a><a href="#start">Get started</a></nav>
+  </header>
+
+  <section class="card" id="overview"><h2>What can this assistant help with?</h2>
+    <p>It can support work across the web, files and code, productivity apps, documents, media, and task automation. Ask for a single task or combine several capabilities to produce a larger deliverable.</p>
+    <p class="muted">The sections below reflect the capability list you provided. Access to a specific service depends on its connection, permissions, and current configuration.</p>
+  </section>
+
+  <section class="card" id="capabilities"><h2>Capability areas</h2>
+    <div class="grid2">
+      <div class="tile"><div class="tile-icon">🔎</div><strong>Web &amp; research</strong><span class="muted">Search the web and extract page content; read, create, merge, or split PDFs; browse and interact with websites, including logins, forms, and clicks.</span></div>
+      <div class="tile"><div class="tile-icon">💻</div><strong>Files &amp; code</strong><span class="muted">Read, write, and edit files; run Python and shell commands; review, debug, and refactor code; handle GitHub pull requests, issues, and repositories.</span></div>
+      <div class="tile"><div class="tile-icon">📚</div><strong>Productivity &amp; documents</strong><span class="muted">Gmail; Google Calendar, Drive, Docs, and Sheets; Word, PowerPoint, and Excel; Obsidian vault management; read and comment on Feishu/Lark documents.</span></div>
+      <div class="tile"><div class="tile-icon">🎨</div><strong>Media &amp; creativity</strong><span class="muted">Convert video or audio to ASCII art; create Manim animations and p5.js generative art; design HTML mockups and landing pages; generate infographics and text-to-speech audio.</span></div>
+      <div class="tile"><div class="tile-icon">⚙️</div><strong>Task automation</strong><span class="muted">Schedule recurring tasks with cron jobs, run background processes, and split work across parallel sub-agent tasks.</span></div>
+      <div class="tile"><div class="tile-icon">🧭</div><strong>Task coordination</strong><span class="muted">Clarify the goal and format, choose the right capabilities, combine multiple work areas, and return results for your review and feedback.</span></div>
+    </div>
+  </section>
+
+  <section class="card"><h2>What helps the assistant get started</h2>
+    <table><thead><tr><th>Provide</th><th>Why it helps</th><th>Example</th></tr></thead><tbody>
+      <tr><td>Your goal</td><td>Defines what needs to be completed</td><td>“Summarize these options”</td></tr>
+      <tr><td>Source material or links</td><td>Points to the information or files to use</td><td>PDF, webpage, source files</td></tr>
+      <tr><td>Output format</td><td>Shapes the result for your next step</td><td>Table, document, slides, infographic</td></tr>
+      <tr><td>Constraints</td><td>Sets scope, style, or review criteria</td><td>Length, language, deadline</td></tr>
+    </tbody></table>
+  </section>
+
+  <section class="card"><h2>How the assistant handles a task</h2>
+    <div class="step"><div class="stepnum">1</div><div><span class="tag tag-blue">REQUEST</span>Describe the goal, relevant material, and the result you want.</div></div>
+    <div class="step"><div class="stepnum">2</div><div><span class="tag tag-blue">PLAN</span>Choose the capability area and ask about important missing details. Run <code>/help</code> to see available commands.</div></div>
+    <div class="step"><div class="stepnum">3</div><div><span class="tag tag-blue">WORK</span>Research, process documents, create content, or run the appropriate workflow.</div></div>
+    <div class="step"><div class="stepnum">4</div><div><span class="tag tag-gold">REVIEW</span>Check the result against your request, surface uncertainty, and revise if needed.</div></div>
+    <div class="step"><div class="stepnum">5</div><div><span class="tag tag-green">DELIVER</span>Share the result for your review. Recurring work can be scheduled or run in the background.</div></div>
+  </section>
+
+  <section class="card" id="workflow"><h2>General workflow</h2>
+    <p class="muted">The assistant chooses a work path based on the result you need. It can return to clarification or revision when necessary.</p>
+    <div class="flow">
+      <div class="flow-node"><strong>Send a request or source material</strong><small>Goal · source · desired format</small></div><div class="flow-arrow" aria-hidden="true">↓</div>
+      <div class="flow-node"><strong>Identify the type of work</strong><small>Research · files and code · productivity · creative work · automation</small></div><div class="flow-arrow" aria-hidden="true">↓</div>
+      <div class="flow-decision"><strong>Is there enough information to proceed?</strong></div>
+      <div class="branches"><div class="branch"><b>No → Ask you</b>Clarify missing sources, scope, format, or constraints.</div><div class="branch"><b>Yes → Choose capabilities</b>Select one area or combine several.</div></div>
+      <div class="flow-arrow" aria-hidden="true">↓</div>
+      <div class="flow-node"><strong>Do the work and prepare a draft</strong><small>Search · read PDFs · edit files/code · create documents/media · automate</small></div><div class="flow-arrow" aria-hidden="true">↓</div>
+      <div class="flow-decision"><strong>Does the result match the request and pass review?</strong></div>
+      <div class="branches"><div class="branch"><b>No → Revise</b>Fill gaps, fix issues, or explain what remains uncertain.</div><div class="branch"><b>Yes → Share for review</b>Deliver the result and collect your feedback.</div></div>
+      <div class="flow-arrow" aria-hidden="true">↓</div>
+      <div class="flow-decision"><strong>Will this task repeat or run in the background?</strong></div>
+      <div class="branches"><div class="branch"><b>No → Finish</b>You receive the result to use or save.</div><div class="branch"><b>Yes → Automate</b>Schedule a cron job, run a background process, or split parallel tasks.</div></div>
+    </div>
+  </section>
+
+  <section class="card" id="outputs"><h2>Possible deliverables</h2>
+    <div class="grid3">
+      <div class="tile"><strong>🔍 Research</strong><span class="muted">Summaries, extracted information, and processed PDFs.</span></div>
+      <div class="tile"><strong>🗂️ Work files</strong><span class="muted">Documents, spreadsheets, slides, or edited files.</span></div>
+      <div class="tile"><strong>🧩 Digital assets</strong><span class="muted">Code, HTML mockups, landing pages, or infographics.</span></div>
+      <div class="tile"><strong>🎧 Media</strong><span class="muted">ASCII art, animation, generative visuals, or audio.</span></div>
+      <div class="tile"><strong>🔁 Workflows</strong><span class="muted">Recurring tasks, background processes, or parallel work.</span></div>
+      <div class="tile"><strong>📝 Review-ready drafts</strong><span class="muted">Results you can comment on and refine further.</span></div>
+    </div>
+    <div class="actions"><a class="button secondary" href="agent-workflow.png" target="_blank" rel="noopener">↗ Open standalone workflow chart (PNG)</a></div>
+  </section>
+
+  <section class="card" id="start"><h2>Get started</h2>
+    <p>Run <code>/help</code> to see available commands, or describe the task you want done in plain language.</p>
+    <div class="highlight"><strong>Example:</strong> “Research this topic using reliable sources, summarize the findings in a short table, and save it as a Word document.”</div>
+    <div class="note"><strong>About integrations:</strong> Gmail, Google Workspace, Microsoft Office, Obsidian, and Feishu/Lark require the appropriate access or connection. This page describes the capabilities in your list; actual connection status depends on the current setup.</div>
+  </section>
+  <footer class="footer">Quy Pham's AI Assistant · Capabilities and workflow overview</footer>
+</main>
+</body>
+</html>
+
